@@ -1,6 +1,6 @@
-void AddCustomLoginScripts();
+void Addmod_firstloginrewardsScripts();
 
-void Addmod_CustomLoginScripts()
+void Addmod_firstloginrewardsScripts()
 {
-    AddCustomLoginScripts();
+    AddmodfirstloginrewardsScripts();
 }
