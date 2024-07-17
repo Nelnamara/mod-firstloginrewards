@@ -1,10 +1,10 @@
 MODS BY A MOONKIN
 
-#############################################################################################################
+####################################################################################
 
 Modules, Scripts, and other resources for use with AzerothCore and the World of Warcraft v3.3.5a game client
 
-#############################################################################################################
+####################################################################################
 
 # ![logo](https://raw.githubusercontent.com/azerothcore/azerothcore.github.io/master/images/logo-github.png) AzerothCore
 
