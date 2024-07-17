@@ -1,8 +1,9 @@
 /*
 
-# Custom Login Modifications #
+# First Login Rewards #
 
-#### A module for AzerothCore by [StygianTheBest](https://github.com/StygianTheBest/AzerothCore-Content/tree/master/Modules)
+#### A module for AzerothCore by [Nelnamara](https://github.com/Nelnamara
+#### Original Concept and mod by StygianTheBest
 ------------------------------------------------------------------------------------------------------------------
 
 
@@ -27,7 +28,7 @@ or logoff the server.
 ### Data ###
 ------------------------------------------------------------------------------------------------------------------
 - Type: Player/Server
-- Script: CustomLogin
+- Script: FirstLogin
 - Config: Yes
     - Enable Module
     - Enable Module Announce
@@ -74,19 +75,19 @@ or logoff the server.
 #include "ScriptMgr.h"
 #include "GuildMgr.h"
 
-class CustomLogin : public PlayerScript
+class FirstLogin : public PlayerScript
 {
 
 public:
-    CustomLogin() : PlayerScript("CustomLogin") { }
+    FirstLogin() : PlayerScript("FirstLogin") { }
 
     void OnFirstLogin(Player* player)
     {
         // If enabled..
-        if (sConfigMgr->GetOption<bool>("CustomLogin.Enable", true))
+        if (sConfigMgr->GetOption<bool>("FirstLogin.Enable", true))
         {
             // If enabled, give heirloom and other items
-            if (sConfigMgr->GetOption<bool>("CustomLogin.BoA", true))
+            if (sConfigMgr->GetOption<bool>("FirstLogin.BoA", true))
             {
 
 
@@ -301,12 +302,12 @@ public:
 
                 // Inform the player they have new items
                 std::ostringstream ss;
-                ss << "|cffFF0000[CustomLogin]:|cffFF8000 The outfitter has placed Heirloom gear in your backpack.";
+                ss << "|cffFF0000[FirstLogin]:|cffFF8000 The outfitter has placed Heirloom gear in your backpack.";
                 ChatHandler(player->GetSession()).SendSysMessage(ss.str().c_str());
             }
 
             // If enabled, learn additional skills
-            if (sConfigMgr->GetOption<bool>("CustomLogin.Skills", true))
+            if (sConfigMgr->GetOption<bool>("FirstLogin.Skills", true))
             {
                 switch (player->getClass())
                 {
@@ -413,12 +414,12 @@ public:
 
                 // Inform the player they have new skills
                 std::ostringstream ss;
-                ss << "|cffFF0000[CustomLogin]:|cffFF8000 You have been granted additional weapon skills.";
+                ss << "|cffFF0000[FirstLogin]:|cffFF8000 You have been granted additional weapon skills.";
                 ChatHandler(player->GetSession()).SendSysMessage(ss.str().c_str());
             }
 
             // If enabled.. learn special skills abilities
-            if (sConfigMgr->GetOption<bool>("CustomLogin.SpecialAbility", true))
+            if (sConfigMgr->GetOption<bool>("FirstLogin.SpecialAbility", true))
             {
                 // Learn Specialized Skills
                 player->learnSpell(1784);	// Stealth
@@ -463,12 +464,12 @@ public:
 
                 // Inform the player they have new skills
                 std::ostringstream ss;
-                ss << "|cffFF0000[CustomLogin]:|cffFF8000 Your spellbook has been scribed with special abilities.";
+                ss << "|cffFF0000[FirstLogin]:|cffFF8000 Your spellbook has been scribed with special abilities.";
                 ChatHandler(player->GetSession()).SendSysMessage(ss.str().c_str());
             }
 
             // If enabled.. set exalted factions (AzerothCore config for rep not working as of 2017-08-25)
-            if (sConfigMgr->GetOption<bool>("CustomLogin.Reputation", true))
+            if (sConfigMgr->GetOption<bool>("FirstLogin.Reputation", true))
             {
                 switch (player->GetTeamId())
                 {
@@ -497,7 +498,7 @@ public:
 
                 // Inform the player they have exalted reputations
                 std::ostringstream ss;
-                ss << "|cffFF0000[CustomLogin]:|cffFF8000 Your are now Exalted with your faction's capital cities " << player->GetName() << ".";
+                ss << "|cffFF0000[FirstLogin]:|cffFF8000 Your are now Exalted with your faction's capital cities " << player->GetName() << ".";
                 ChatHandler(player->GetSession()).SendSysMessage(ss.str().c_str());
             }
         }
@@ -506,16 +507,16 @@ public:
     void OnLogin(Player* player)
     {
         // If enabled..
-        if (sConfigMgr->GetOption<bool>("CustomLogin.Enable", true))
+        if (sConfigMgr->GetOption<bool>("FirstLogin.Enable", true))
         {
             // Announce Module
-            if (sConfigMgr->GetOption<bool>("CustomLogin.Announce", true))
+            if (sConfigMgr->GetOption<bool>("FirstLogin.Announce", true))
             {
-                ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00CustomLogin |rmodule.");
+                ChatHandler(player->GetSession()).SendSysMessage("This server is running the |cff4CFF00FirstLogin |rmodule.");
             }
 
             // If enabled..
-            if (sConfigMgr->GetOption<bool>("CustomLogin.PlayerAnnounce", true))
+            if (sConfigMgr->GetOption<bool>("FirstLogin.PlayerAnnounce", true))
             {
                 // Announce Player Login
                 if (player->GetTeamId() == TEAM_ALLIANCE)
@@ -536,10 +537,10 @@ public:
 
     void OnLogout(Player *player)
     {
-        if (sConfigMgr->GetOption<bool>("CustomLogin.Enable", true))
+        if (sConfigMgr->GetOption<bool>("FirstLogin.Enable", true))
         {
             // If enabled..
-            if (sConfigMgr->GetOption<bool>("CustomLogin.PlayerAnnounce", true))
+            if (sConfigMgr->GetOption<bool>("FirstLogin.PlayerAnnounce", true))
             {
                 // Announce Player Login
                 if (player->GetTeamId() == TEAM_ALLIANCE)
@@ -559,7 +560,7 @@ public:
     }
 };
 
-void AddCustomLoginScripts()
+void AddFirstLoginRewardsScripts()
 {
-    new CustomLogin();
+    new FirstLogin();
 }
