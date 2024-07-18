@@ -560,7 +560,7 @@ public:
     }
 };
 
-void AddfirstloginrewardsScripts()
+void AddFirstLoginScripts()
 {
     new FirstLogin();
 }
