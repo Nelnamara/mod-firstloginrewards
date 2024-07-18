@@ -1,6 +1,6 @@
-void AddfirstloginrewardsScripts();
+void AddFirstLoginScripts();
 
 void Addmod_firstloginrewardsScripts()
 {
-    AddfirstloginrewardsScripts();
+    AddFirstLoginScripts();
 }
